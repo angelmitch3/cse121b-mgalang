@@ -1,44 +1,46 @@
-/* W02-Task - Profile Home Page */
+window.onload = function() {
+    /* Step 2 - Variables */
+    let fullName = 'Michael Galang';
+    let currentYear = new Date().getFullYear();
+    let profilePicture = 'images/placeholder.png';
 
-/* Step 1 - Setup type tasks - no code required */
+    /* Step 3 - Element Variables */
+    const nameElement = document.getElementById('name');
+    let foodElement = document.getElementById('food');
+    let yearElement = document.querySelector('#year');
+    let imageElement = document.querySelector('#profilePicture');
 
-/* Step 2 - Variables */
-let fullName = 'Michael Galang'
-let currentYear = new Date().getFullYear();
-let profilePicture = './images/placeholder.png';
+    /* Step 4 - Adding Content */
+    nameElement.innerHTML = `<strong>${fullName}</strong>`;
+    yearElement.textContent = currentYear;
+    imageElement.setAttribute('src', profilePicture); 
+    imageElement.setAttribute('alt', `Profile image of ${fullName}`);
 
-/* Step 3 - Element Variables */
+    /* Step 5 - Array */
+    // Declare an array variable to hold your favorite foods
+    let favFoods = ['Pizza', 'Pasta', 'Ice Cream'];
 
-let foodElement = document.getElementById('food');
-let yearElement = document.querySelector('#year');
-let imageElement = document.querySelector('#profileImage');
+    // Modify the HTML element with the id of 'food' to display your favorite foods array
+    foodElement.innerHTML = favFoods.join(', ');
 
+    // Declare and instantiate a variable to hold another single favorite food item
+    let newFavoriteFood = 'Sushi';
 
+    // Add the value stored in this new variable to your favorite food array
+    favFoods.push(newFavoriteFood);
 
-/* Step 4 - Adding Content */
+    // Append the new array values onto the displayed content of the HTML element with the id of food
+    foodElement.innerHTML += `<br>${favFoods.join(', ')}`;
 
-nameElement.innerHTML = `<strong>${fullName}</strong>`;
-yearElement.textContent = currentYear;
-imageElement.setAttribute('src', profilePicture); 
-imageElement.setAttribute('alt', `Profile image of ${fullName}`);
+    // Remove the first element in the favorite food array
+    favFoods.shift();
 
+    // Again, append the array output showing the modified array
+    foodElement.innerHTML += `<br>${favFoods.join(', ')}`;
 
+    // Remove the last element in the favorite food array
+    favFoods.pop();
 
-/* Step 5 - Array */
-
-let favoriteFoods = ['Rice', 'Pizza', 'Fried Chicken'];
-foodElement.textContent = favoriteFoods.join(', ');
-let newFavoriteFood = 'Shawarma';
-favoriteFoods.push(newFavoriteFood);
-foodElement.innerHTML += `{favoriteFoods}`;
-favoriteFoods.shift();
-foodElement.innerHTML +='<br>' + favoriteFoods.join(', ');
-favoriteFoods.pop();
-foodElement.innerHTML +='<br>' + favoriteFoods.join(', ');
-
-
-
-
-
-
-
+    // Append the array output with this final modified favorite foods array
+    foodElement.innerHTML += `<br>${favFoods.join(', ')}`;
+}
